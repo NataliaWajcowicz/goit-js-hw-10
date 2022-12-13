@@ -12,9 +12,60 @@ body {
   line-height: 1.5;
 }
 
+h3 {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+h2{
+  font-size:30px;
+}
+
+span{
+  font-weight:500;
+}
 #search-box {
   font: inherit;
   padding: 8px;
   max-width: 320px;
   margin-bottom: 16px;
 }
+
+.country-list{
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.country-list__item{
+  margin-top: 10px;
+  width: 200px;
+  text-align: center;
+}
+
+.country-list__flag{
+  width:50px;
+  text-align: center;
+
+}
+
+.country-info{
+  width:500px;
+}
+
+.country-info__flag{
+  width:250px;
+  text-align: center;
+}
+
+.country-info__list{
+  list-style-type: none;
+  padding:0;
+  margin:0;
+
+}
+
+.country-info__item{
+  text-align:center;
+}
+
