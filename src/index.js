@@ -9,16 +9,20 @@ const countryList = document.querySelector('.country-list')
 const countryInfo = document.querySelector('.country-info')
 const searchbox = document.querySelector('#search-box')
 
+
 searchbox.addEventListener('input', debounce(searchCountry, DEBOUNCE_DELAY));
+
+
 
 function searchCountry() {
 	countryList.innerHTML = '';
 	countryInfo.innerHTML = '';
 	const name = searchbox.value.trim()
-	if (name) {
+	const nameString =searchbox.value.toString()	
+	 if (name) {
 		fetchCountries(name)
 			.then(response => {
-				if (response.length > 10) {
+			if (response.length > 10) {
 					Notify.info('Too many matches found. Please enter a more specific name.')
 				} else if (response.length >= 2) {
 					countryList.insertAdjacentHTML('afterbegin', response.map(element => `<li class="country-list__item">
@@ -37,7 +41,12 @@ function searchCountry() {
 				}
 			})
 			.catch(error => {
-				Notify.failure('Oops, there is no country with that name')
+				if (name.substring(`-` || `?` || `.` || `!` || `@` || `#` || `$` || `%` || `~` || `^` || `&` || `*` || `(` || `)` || `_` || `=` || `+` || `[` || `{` || `}`||`]`||`|`||`;`||`:`||`"`||`,`||"'")) {
+					Notify.failure(`Please do not use special characters`)
+				} else {
+					Notify.failure('Oops, there is no country with that name')
+				}
 			});
+		
 	}
 }
