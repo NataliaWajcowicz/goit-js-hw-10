@@ -41,8 +41,11 @@ function searchCountry() {
 				}
 			})
 			.catch(error => {
-				if (name.substring(`-` || `?` || `.` || `!` || `@` || `#` || `$` || `%` || `~` || `^` || `&` || `*` || `(` || `)` || `_` || `=` || `+` || `[` || `{` || `}`||`]`||`|`||`;`||`:`||`"`||`,`||"'")) {
-					Notify.failure(`Please do not use special characters`)
+				//const properInput = /^[A-Za-z\s]*$/.test(name)
+				if (name.substring(/^[a-zA-Z\s\-]*$/)) {
+				/* name.substring(`-` || `?` || `.` || `!` || `@` || `#` || `$` || `%` || `~` || `^` || `&` || `*` || `(` || `)` || `_` || `=` || `+` || `[` || `{` || `}`||`]`||`|`||`;`||`:`||`"`||`,`||"'") */
+				
+					Notify.failure(`Please do not use digits or special characters`);
 				} else {
 					Notify.failure('Oops, there is no country with that name')
 				}
